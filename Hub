@@ -1,1 +1,2 @@
-loadstring(game:HttpGet(""))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/shan-commits2/IDK/refs/heads/main/Gamelist.lua"))()
+print("LoadingGamelist")
