@@ -1,1 +1,184 @@
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+local Window = OrionLib:MakeWindow({
+    Name = "Hub",
+    HidePremium = false,
+    SaveConfig = false,
+    ConfigFolder = "OrionTest",
+    Draggable = true
+})
 
+local MainTab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+local TeleportSection = MainTab:AddSection({ Name = "Teleport"})
+local TrollSection = MainTab:AddSection({ Name = "Troll"})
+
+TeleportSection:AddButton({
+    Name = "Copy Position to Clipboard",
+    Callback = function()
+        -- Services and initial setup
+        local Players = game:GetService("Players")
+        local Player = Players.LocalPlayer
+        local Char = Player.Character or Player.CharacterAdded:Wait()
+        local RootPart = Char:WaitForChild("HumanoidRootPart")
+
+        -- Get the player's position
+        local Position = RootPart.Position
+        local PositionString = string.format("Vector3.new(%.2f, %.2f, %.2f)", Position.X, Position.Y, Position.Z)
+
+        -- Copy position to clipboard
+        if setclipboard then
+            setclipboard(PositionString)
+            OrionLib:MakeNotification({
+                Name = "Position Copied",
+                Content = "Your position has been copied to the clipboard as a Vector3.",
+                Time = 5,
+                Icon = "rbxassetid://6031071053"
+            })
+        else
+            OrionLib:MakeNotification({
+                Name = "Error",
+                Content = "Clipboard functionality is not supported on this platform.",
+                Time = 5,
+                Icon = "rbxassetid://6031071053"
+            })
+        end
+    end
+})
+----teleports
+TeleportSection:AddButton({
+    Name = "Teleport to Volcano",
+    Callback = function()
+        -- Services and initial setup
+        local Players = game:GetService("Players")
+        local Player = Players.LocalPlayer
+        local Char = Player.Character or Player.CharacterAdded:Wait()
+        local RootPart = Char:WaitForChild("HumanoidRootPart")
+
+        -- Set the player's position to the volcano coordinates
+        local VolcanoPosition = Vector3.new(-1544.99, 623.00, 1115.51)
+        RootPart.CFrame = CFrame.new(VolcanoPosition)
+
+        -- Notification to inform the player
+        OrionLib:MakeNotification({
+            Name = "Teleported",
+            Content = "You have been teleported to the Volcano.",
+            Time = 5,
+            Icon = "rbxassetid://6031071053"
+        })
+    end
+})
+
+TeleportSection:AddButton({
+    Name = "Teleport to Volcano(below)",
+    Callback = function()
+        -- Services and initial setup
+        local Players = game:GetService("Players")
+        local Player = Players.LocalPlayer
+        local Char = Player.Character or Player.CharacterAdded:Wait()
+        local RootPart = Char:WaitForChild("HumanoidRootPart")
+
+        -- Set the player's position to the volcano coordinates
+        local VolcanoPosition = Vector3.new(-1265.40, 295.00, 941.62)
+        RootPart.CFrame = CFrame.new(VolcanoPosition)
+
+        -- Notification to inform the player
+        OrionLib:MakeNotification({
+            Name = "Teleported",
+            Content = "You have been teleported to the Volcano(below).",
+            Time = 5,
+            Icon = "rbxassetid://6031071053"
+        })
+    end
+})
+
+TeleportSection:AddButton({
+    Name = "Teleport to Tropics",
+    Callback = function()
+        -- Services and initial setup
+        local Players = game:GetService("Players")
+        local Player = Players.LocalPlayer
+        local Char = Player.Character or Player.CharacterAdded:Wait()
+        local RootPart = Char:WaitForChild("HumanoidRootPart")
+
+        -- Set the player's position to the volcano coordinates
+        local VolcanoPosition = Vector3.new(4398.71, -1.20, 63.82)
+        RootPart.CFrame = CFrame.new(VolcanoPosition)
+
+        -- Notification to inform the player
+        OrionLib:MakeNotification({
+            Name = "Teleported",
+            Content = "You have been teleported to the Tropics.",
+            Time = 5,
+            Icon = "rbxassetid://6031071053"
+        })
+    end
+})
+
+TeleportSection:AddToggle({
+    Name = "Toggle Speed",
+    Default = false,  -- Default state is not fast
+    Callback = function(Value)
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoid = character:WaitForChild("Humanoid")
+
+        if Value then
+            -- Set speed to 50 when toggle is enabled
+            humanoid.WalkSpeed = 50
+        else
+            -- Set speed back to normal (16 is the default walk speed)
+            humanoid.WalkSpeed = 16
+        end
+    end
+})
+
+TrollSection:AddButton({
+    Name = "Teleport on key press",
+    Callback = function()
+        -- Configurations for the teleport feature
+        local Config = {
+            Teleport_Key = Enum.KeyCode.LeftBracket, -- Key to teleport
+            Active_Color = Color3.fromRGB(0, 255, 0), -- Green
+            Inactive_Color = Color3.fromRGB(255, 0, 0) -- Red
+        }
+ 
+        -- Services and initial setup
+        local UserInputService = game:GetService("UserInputService")
+        local Players = game:GetService("Players")
+        local Mouse = Players.LocalPlayer:GetMouse()
+        local Player = Players.LocalPlayer
+        local Char = Player.Character or Player.CharacterAdded:Wait()
+        local RootPart = Char:WaitForChild("HumanoidRootPart")
+ 
+        -- Create Indicator GUI
+        local ScreenGui = Instance.new("ScreenGui", Player:WaitForChild("PlayerGui"))
+        local IndicatorFrame = Instance.new("Frame", ScreenGui)
+        IndicatorFrame.Size = UDim2.new(0, 100, 0, 50)
+        IndicatorFrame.Position = UDim2.new(0, 10, 1, -60) -- Bottom left corner
+        IndicatorFrame.BackgroundColor3 = Config.Inactive_Color -- Default is red
+ 
+        local TeleportEnabled = false
+ 
+        -- Toggle teleport mode
+        UserInputService.InputBegan:Connect(function(Input, GPE)
+            if GPE then return end
+            if Input.KeyCode == Config.Teleport_Key then
+                if Mouse.Target then
+                    local TargetPosition = Mouse.Hit.Position
+                    RootPart.CFrame = CFrame.new(TargetPosition + Vector3.new(0, 3, 0)) -- Add offset to avoid getting stuck in objects
+                end
+            end
+        end)
+ 
+        -- Notification to remind users
+        OrionLib:MakeNotification({
+            Name = "Reminder",
+            Content = "Press '[' to teleport to the mouse's position.",
+            Time = 5,
+            Icon = "rbxassetid://6031071053"
+        })
+    end
+})
