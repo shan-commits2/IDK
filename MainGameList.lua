@@ -10,7 +10,7 @@ getgenv().Games = {
   [18901165922] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/main/Pet%20GO.lua",
   [16732694052] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/main/Fisch.lua",
   [13822889] = "https://raw.githubusercontent.com/shan-commits2/IDK/refs/heads/main/lumberjack",
-  [12312312] = "https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/ShrimpGame.lua",
+  [7606564092] = "https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/ShrimpGame.lua",
 }
 
 local function getGameScript(gameID)
