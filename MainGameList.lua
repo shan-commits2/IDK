@@ -1,7 +1,7 @@
 getgenv().Games = {
-  [2753915549] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/main/Blox%20Fruit.lua",
-  [4442272183] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/main/Blox%20Fruit.lua",
-  [7449423635] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/main/Blox%20Fruit.lua",
+  [2753915549] = "https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua",
+  [4442272183] = "https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua",
+  [7449423635] = "https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua",
   [3623096087] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/main/Muscle%20Legends.lua",
   [8737899170] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/main/PS99.lua",
   [16498369169] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/main/PS99.lua",
