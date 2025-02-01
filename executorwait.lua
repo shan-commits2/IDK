@@ -15,6 +15,6 @@ Home:AddParagraph("Read Me","Hello before you use the ingame executor i want to 
 Home:AddButton({
 	Name = "I readed it",
 	Callback = function()
-		loadstring(game:HttpGet(""))
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/shan-commits2/IDK/refs/heads/main/executorProtected.lua"))()
 	end
 })
