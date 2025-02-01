@@ -16,5 +16,8 @@ Home:AddButton({
 	Name = "I readed it",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/shan-commits2/IDK/refs/heads/main/executorProtected.lua"))()
+			wait(1)
+			OrionLib:Destroy()
 	end
 })
+OrionLib:Init()
