@@ -11,6 +11,9 @@ getgenv().Games = {
   [16732694052] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/main/Fisch.lua",
   [13822889] = "https://raw.githubusercontent.com/shan-commits2/IDK/refs/heads/main/lumberjack",
   [7606564092] = "https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/ShrimpGame.lua",
+  [116495829188952] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/refs/heads/main/Dead%20Rails.lua", -- Dead Rails
+  [70876832253163] = "https://raw.githubusercontent.com/AhmadV99/Script-Games/refs/heads/main/Dead%20Rails.lua", -- Dead Rails
+  [70876832253163] = "https://raw.githubusercontent.com/gumanba/Scripts/refs/heads/main/DeadRails", -- Dead Rails
 }
 
 local function getGameScript(gameID)
